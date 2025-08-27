@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voidforge Tactics</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #0a0a0a;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            overflow: hidden;
+        }
+        
+        #gameContainer {
+            display: flex;
+            height: 100vh;
+        }
+        
+        #gameCanvas {
+            background: #111;
+            border: 2px solid #00ff00;
+            cursor: crosshair;
+        }
+        
+        #ui {
+            width: 300px;
+            background: #1a1a1a;
+            border-left: 2px solid #00ff00;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .ui-section {
+            background: #222;
+            border: 1px solid #00ff00;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 3px;
+        }
+        
+        .ui-title {
+            color: #00ffff;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .resource-bar {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        
+        .unit-info {
+            background: #333;
+            border: 1px solid #555;
+            padding: 8px;
+            margin: 5px 0;
+            border-radius: 3px;
+        }
+        
+        .action-button {
+            background: #004400;
+            border: 1px solid #00ff00;
+            color: #00ff00;
+            padding: 8px 12px;
+            margin: 2px;
+            cursor: pointer;
+            border-radius: 3px;
+            font-family: inherit;
+        }
+        
+        .action-button:hover {
+            background: #006600;
+        }
+        
+        .action-button:disabled {
+            background: #222;
+            color: #666;
+            cursor: not-allowed;
+        }
+        
+        #turnInfo {
+            text-align: center;
+            font-size: 18px;
+            color: #00ffff;
+        }
+        
+        .faction-neocorp { color: #00ff00; }
+        .faction-xenotech { color: #ff6600; }
+        .faction-overmind { color: #00ccff; }
+        
+        #gameTitle {
+            text-align: center;
+            font-size: 24px;
+            color: #00ffff;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #00ffff;
+        }
+    </style>
+</head>
+<body>
+    <div id="gameContainer">
+        <canvas id="gameCanvas" width="800" height="600"></canvas>
+        <div id="ui">
+            <div id="gameTitle">VOIDFORGE TACTICS</div>
+            
+            <div class="ui-section">
+                <div class="ui-title">Turn Information</div>
+                <div id="turnInfo">Turn 1 - NeoCorp Syndicate</div>
+                <div id="phaseInfo">Resource Phase</div>
+            </div>
+            
+            <div class="ui-section">
+                <div class="ui-title">Resources</div>
+                <div class="resource-bar">
+                    <span>Energy:</span>
+                    <span id="energyCount">100</span>
+                </div>
+                <div class="resource-bar">
+                    <span>Alloys:</span>
+                    <span id="alloyCount">50</span>
+                </div>
+                <div class="resource-bar">
+                    <span>Void Shards:</span>
+                    <span id="shardCount">0</span>
+                </div>
+            </div>
+            
+            <div class="ui-section">
+                <div class="ui-title">Selected Unit</div>
+                <div id="selectedUnit">None</div>
+            </div>
+            
+            <div class="ui-section">
+                <div class="ui-title">Actions</div>
+                <button class="action-button" id="moveBtn">Move</button>
+                <button class="action-button" id="attackBtn">Attack</button>
+                <button class="action-button" id="buildBtn">Build</button>
+                <button class="action-button" id="abilityBtn">Ability</button>
+                <button class="action-button" id="endTurnBtn">End Turn</button>
+            </div>
+            
+            <div class="ui-section">
+                <div class="ui-title">Map Info</div>
+                <div id="tileInfo">Hover over tiles for info</div>
+            </div>
+        </div>
+    </div>
+    
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
